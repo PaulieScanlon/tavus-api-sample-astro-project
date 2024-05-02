@@ -1,0 +1,82 @@
+---
+import '../../src/styles/global.css';
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Tavus API sample Astro project</title>
+  </head>
+  <body class='prose max-w-none'>
+    <script>
+      const form = document.getElementById('myForm');
+      const button = document.getElementById('myButton');
+      const pre = document.getElementById('myPre');
+
+      const handleSubmit = async (event: SubmitEvent) => {
+        event.preventDefault();
+        button.setAttribute('disabled', 'true');
+        const formData = new FormData(event.target as HTMLFormElement);
+
+        try {
+          const response = await fetch('/api/create-video', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error();
+          }
+          pre.innerHTML = JSON.stringify(data.message, null, 2);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      form?.addEventListener('submit', handleSubmit);
+    </script>
+
+    <h1>Test API Form</h1>
+    <p>Create a replica using the Tavus API</p>
+
+    <section>
+      <div>
+        <h2>Request</h2>
+        <form id='myForm' method='POST'>
+          <label>
+            Model
+            <select name='replica_id' id='replica_id'>
+              <option value='r8bfa69a42'>Laura</option>
+              <option value='re1074c227'>Reyna</option>
+              <option value='rf01eccaf1'>Andre</option>
+              <option value='re6d38b625'>David</option>
+            </select>
+          </label>
+          <label>
+            Video name
+            <input type='text' name='video_name' id='video_name' placeholder='Test video' />
+          </label>
+          <label>
+            Script
+            <textarea name='script' id='script' placeholder='This is a test script'></textarea>
+          </label>
+          <label>
+            Background url
+            <input type='text' name='background_url' id='background_url' />
+          </label>
+          <button id='myButton'>create</button>
+        </form>
+      </div>
+
+      <div>
+        <h2>Response</h2>
+        <pre id='myPre'></pre>
+      </div>
+    </section>
+  </body>
+</html>

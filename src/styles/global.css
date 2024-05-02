@@ -1,0 +1,29 @@
+body {
+  @apply p-8;
+}
+
+form {
+  @apply flex flex-col gap-4;
+}
+
+label {
+  @apply flex flex-col font-medium text-xs;
+}
+
+select,
+input,
+textarea {
+  @apply flex grow text-sm border border-gray-100 rounded p-2 mt-2;
+}
+
+button {
+  @apply select-none border rounded p-2 text-white bg-pink-600 capitalize;
+}
+
+button:disabled {
+  @apply bg-gray-400 pointer-events-none cursor-not-allowed;
+}
+
+section {
+  @apply grid md:grid-cols-2 gap-0 md:gap-16;
+}
