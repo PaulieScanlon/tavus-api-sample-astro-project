@@ -1,10 +1,11 @@
-# Tavus API sample Astro project
+# Tavus Test App
 
-To use this repository [sign up](https://app.tavus.io/signup) to Tavus and create an API key.
+Create an AI avatar using the [Replica API](https://docs.tavusapi.com/sections/introduction)
 
 ## Getting started
 
-Rename `.env.example` to `.env` and add your Tavus API key.
+1. To use this test app [sign up](https://app.tavus.io/signup) to Tavus and create an API key.
+2. Rename `.env.example` to `.env` and add your Tavus API key.
 
 ### Install dependencies
 
@@ -22,8 +23,18 @@ To start the development run the following.
 npm run dev
 ```
 
+### Preview
+
+To see the site running in development mode visit:
+
+```
+http://localhost:4321
+```
+
 ## Usage
 
-Fill out the form fields and click the create button. The response will give you the current status of you request and a preview URL for when the video render has completed.
+Fill out the form fields and click the create button. The page will automatically refresh every 5 seconds until the `status` changes to `ready`.
 
-You can also see the completed video in the [Tavus dashboard](https://app.tavus.io/developer/videos).
+Copy the `download_url` from the response and paste it into a new browser window to download your rendered video.
+
+You can also see the rendered video in your [Tavus dashboard](https://app.tavus.io/developer/videos).

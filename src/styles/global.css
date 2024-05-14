@@ -6,6 +6,10 @@ form {
   @apply flex flex-col gap-4;
 }
 
+pre {
+  @apply !text-xl;
+}
+
 label {
   @apply flex flex-col font-medium text-xs;
 }
@@ -25,5 +29,9 @@ button:disabled {
 }
 
 section {
-  @apply grid md:grid-cols-2 gap-0 md:gap-16;
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-16;
+}
+
+section > div:last-of-type {
+  @apply col-span-2;
 }
